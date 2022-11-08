@@ -8,7 +8,7 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
     using Chainlink for Chainlink.Request;
 
     struct PageRankInfo {
-        uint256 rank;
+        string rank;
         string score;
         uint256 blockNumber;
     }
@@ -19,7 +19,7 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
 
     error InvalidArrayData();
 
-    event RequestPageRankFulfilled(bytes32 indexed requestId, address[] addr, uint256[] rank, string[] score);
+    event RequestPageRankFulfilled(bytes32 indexed requestId, address[] addr, string[] rank, string[] score);
 
     constructor(address linkAddress) ConfirmedOwner(msg.sender) {
         setChainlinkToken(linkAddress);
@@ -30,7 +30,7 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
      * @param oracle oracle address
      * @param jobId node generated jobId
      */
-    function requestPageRankInfo(address oracle, string memory jobId) public onlyOwner {
+    function requestPageRankInfo(address oracle, string memory jobId) public {
         Chainlink.Request memory req = buildChainlinkRequest(
             stringToBytes32(jobId),
             address(this),
@@ -45,7 +45,7 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
      * @param jobId node generated jobId
      * @param params string params array
      */
-    function requestPageRankInfoParams(address oracle, string memory jobId, string[] memory params) public onlyOwner {
+    function requestPageRankInfoParams(address oracle, string memory jobId, string[] memory params) public {
         Chainlink.Request memory req = buildChainlinkRequest(
             stringToBytes32(jobId),
             address(this),
@@ -59,7 +59,7 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
     function fulfillPageRankInfo(
         bytes32 _requestId,
         address[] memory addr,
-        uint256[] memory rank,
+        string[] memory rank,
         string[] memory score
     ) public recordChainlinkFulfillment(_requestId) {
         // check length

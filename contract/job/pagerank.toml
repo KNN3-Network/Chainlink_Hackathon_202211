@@ -10,7 +10,7 @@ observationSource = """
 
     fetch        [type=bridge name="pagerank" requestData="{\\"id\\": $(jobSpec.externalJobID), \\"data\\": { }}" allowUnrestrictedNetworkAccess="true"]
     parse        [type="jsonparse" path="data" data="$(fetch)"]
-    encode_data  [type="ethabiencode" abi="(bytes32 requestId,address[] addr,uint256[] rank,string[] score)" data="{\\"requestId\\": $(decode_log.requestId), \\"addr\\": $(parse.addr), \\"rank\\": $(parse.rank), \\"score\\": $(parse.score)}" ]
+    encode_data  [type="ethabiencode" abi="(bytes32 requestId,address[] addr,string[] rank,string[] score)" data="{\\"requestId\\": $(decode_log.requestId), \\"addr\\": $(parse.addr), \\"rank\\": $(parse.rank), \\"score\\": $(parse.score)}" ]
     encode_tx    [type="ethabiencode"
                   abi="fulfillOracleRequest2(bytes32 requestId, uint256 payment, address callbackAddress, bytes4 callbackFunctionId, uint256 expiration, bytes calldata data)"
                   data="{\\"requestId\\": $(decode_log.requestId), \\"payment\\":   $(decode_log.payment), \\"callbackAddress\\": $(decode_log.callbackAddr), \\"callbackFunctionId\\": $(decode_log.callbackFunctionId), \\"expiration\\": $(decode_log.cancelExpiration), \\"data\\": $(encode_data)}"
