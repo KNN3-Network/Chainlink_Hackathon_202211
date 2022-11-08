@@ -40,12 +40,12 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
     }
 
     /**
-     * @notice request PageRankInfo
+     * @notice request PageRankInfo params
      * @param oracle oracle address
      * @param jobId node generated jobId
      * @param params string params array
      */
-    function requestPageRankInfo(address oracle, string memory jobId, string[] memory params) public onlyOwner {
+    function requestPageRankInfoParams(address oracle, string memory jobId, string[] memory params) public onlyOwner {
         Chainlink.Request memory req = buildChainlinkRequest(
             stringToBytes32(jobId),
             address(this),
