@@ -11,7 +11,7 @@ export enum eEthereumNetwork {
 }
 
 export enum ePolygonNetwork {
-  matic = "matic",
+  polygon = "polygon",
   mumbai = "mumbai",
 }
 

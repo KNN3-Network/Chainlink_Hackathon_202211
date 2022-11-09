@@ -10,7 +10,7 @@ task("deploy:KNN3ProfileClient").setAction(async function (_taskArgs, { ethers, 
         return "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
       case eEthereumNetwork.goerli:
         return "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
-      case ePolygonNetwork.matic:
+      case ePolygonNetwork.polygon:
         return "0xb0897686c545045aFc77CF20eC7A532E3120E0F1";
       default:
         break;

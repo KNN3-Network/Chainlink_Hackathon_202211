@@ -31,7 +31,7 @@ const chainIds = {
   hardhat: 31337,
   mainnet: 1,
   "optimism-mainnet": 10,
-  "polygon-mainnet": 137,
+  polygon: 137,
   "polygon-mumbai": 80001,
   sepolia: 11155111,
   goerli: 5,
@@ -46,9 +46,9 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
     case "bsc":
       jsonRpcUrl = "https://bsc-dataseed1.binance.org";
       break;
-    // case "goerli":
-    //   jsonRpcUrl = "https://goerli.net";
-    //   break;
+    case "polygon":
+      jsonRpcUrl = "https://polygon-rpc.com";
+      break;
 
     default:
       jsonRpcUrl = "https://" + chain + ".infura.io/v3/" + infuraApiKey;
@@ -99,7 +99,7 @@ const config: HardhatUserConfig = {
     mainnet: getChainConfig("mainnet"),
     goerli: getChainConfig("goerli"),
     optimism: getChainConfig("optimism-mainnet"),
-    "polygon-mainnet": getChainConfig("polygon-mainnet"),
+    polygon: getChainConfig("polygon"),
     "polygon-mumbai": getChainConfig("polygon-mumbai"),
     sepolia: getChainConfig("sepolia"),
   },

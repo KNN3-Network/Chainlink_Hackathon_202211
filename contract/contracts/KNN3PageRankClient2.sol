@@ -4,22 +4,20 @@ pragma solidity ^0.8.7;
 import "@chainlink/contracts/src/v0.8/ChainlinkClient.sol";
 import "@chainlink/contracts/src/v0.8/ConfirmedOwner.sol";
 
-contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
+contract KNN3ProfileClient2 is ChainlinkClient, ConfirmedOwner {
     using Chainlink for Chainlink.Request;
 
     struct PageRankInfo {
-        address addr;
         string rank;
         string score;
         uint256 blockNumber;
     }
 
-    PageRankInfo[] public PageRankArr;
+    mapping(address => PageRankInfo) public PageRankObject;
 
     uint256 private constant ORACLE_PAYMENT = 1 * 10 ** 1; // 1 * 10**1
 
     error InvalidArrayData();
-    error InvalidArray();
 
     event RequestPageRankFulfilled(bytes32 indexed requestId, address[] addr, string[] rank, string[] score);
 
@@ -58,22 +56,6 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
         sendChainlinkRequestTo(oracle, req, ORACLE_PAYMENT);
     }
 
-    function getPageRank() public view returns (address[] memory, string[] memory, string[] memory) {
-        if (PageRankArr.length == 0) revert InvalidArray();
-
-        address[] memory addr = new address[](PageRankArr.length);
-        string[] memory rank = new string[](PageRankArr.length);
-        string[] memory score = new string[](PageRankArr.length);
-        for (uint i = 0; i < PageRankArr.length; i++) {
-            PageRankInfo memory info = PageRankArr[i];
-            addr[i] = info.addr;
-            rank[i] = info.rank;
-            score[i] = info.score;
-        }
-
-        return (addr, rank, score);
-    }
-
     function fulfillPageRankInfo(
         bytes32 _requestId,
         address[] memory addr,
@@ -84,9 +66,8 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
         if (addr.length != rank.length) revert InvalidArrayData();
         if (addr.length != score.length) revert InvalidArrayData();
 
-        delete PageRankArr;
         for (uint256 i; i < addr.length; i++) {
-            PageRankArr.push(PageRankInfo(addr[i], rank[i], score[i], block.number));
+            PageRankObject[addr[i]] = PageRankInfo(rank[i], score[i], block.number);
         }
 
         emit RequestPageRankFulfilled(_requestId, addr, rank, score);
