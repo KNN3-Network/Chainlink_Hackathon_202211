@@ -38,7 +38,7 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
             address(this),
             this.fulfillPageRankInfo.selector
         );
-        delete PageRankArr;
+
         sendChainlinkRequestTo(oracle, req, ORACLE_PAYMENT);
     }
 
@@ -56,7 +56,6 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
         );
         req.addStringArray("params", params);
 
-        delete PageRankArr;
         sendChainlinkRequestTo(oracle, req, ORACLE_PAYMENT);
     }
 
@@ -86,6 +85,7 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
         if (addr.length != rank.length) revert InvalidArrayData();
         if (addr.length != score.length) revert InvalidArrayData();
 
+        delete PageRankArr;
         for (uint256 i; i < addr.length; i++) {
             PageRankArr.push(PageRankInfo(addr[i], rank[i], score[i], block.number));
         }

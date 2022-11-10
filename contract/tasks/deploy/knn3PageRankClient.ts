@@ -20,6 +20,7 @@ task("deploy:KNN3ProfileClient").setAction(async function (_taskArgs, { ethers, 
   const signers: SignerWithAddress[] = await ethers.getSigners();
   const KNN3ProfileClient = await ethers.getContractFactory("KNN3ProfileClient");
   const knn3ProfileClient = await KNN3ProfileClient.connect(signers[0]).deploy(link());
+  console.log("knn3ProfileClient deploying: ", knn3ProfileClient);
   await knn3ProfileClient.deployed();
   console.log("knn3ProfileClient deployed to: ", knn3ProfileClient.address);
 });
