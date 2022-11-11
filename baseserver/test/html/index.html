@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    data
+    <script type="text/javascript">
+      const eventSource = new EventSource('http://127.0.0.1:3001/cron/sse');
+      eventSource.onmessage = ({ data }) => {
+        console.log('data', data);
+        const message = document.createElement('li');
+        message.innerText = 'New message: ' + data;
+        document.body.appendChild(message);
+      };
+    </script>
+  </body>
+</html>

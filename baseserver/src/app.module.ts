@@ -11,6 +11,7 @@ import {
 } from './interceptor';
 import { HttpExceptionFilter } from './filter';
 import { JobModule } from './job/job.module';
+import { CronModule } from './cron/cron.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { JobModule } from './job/job.module';
     }),
     ConfigModule,
     JobModule,
+    CronModule,
   ],
   controllers: [AppController],
   providers: [
