@@ -19,7 +19,6 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
     uint256 private constant ORACLE_PAYMENT = 1 * 10 ** 1; // 1 * 10**1
 
     error InvalidArrayData();
-    error InvalidArray();
 
     event RequestPageRankFulfilled(bytes32 indexed requestId, address[] addr, string[] rank, string[] score);
 
@@ -60,8 +59,6 @@ contract KNN3ProfileClient is ChainlinkClient, ConfirmedOwner {
     }
 
     function getPageRank() public view returns (address[] memory, string[] memory, string[] memory) {
-        if (PageRankArr.length == 0) revert InvalidArray();
-
         address[] memory addr = new address[](PageRankArr.length);
         string[] memory rank = new string[](PageRankArr.length);
         string[] memory score = new string[](PageRankArr.length);
