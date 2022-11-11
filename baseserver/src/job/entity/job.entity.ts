@@ -30,7 +30,7 @@ export class Job {
   alogorithm: string;
 
   @Column({ nullable: true })
-  intereedAddress: string;
+  interestedAddress: string;
 
   /*
         ┌───────── minute (0 - 59)

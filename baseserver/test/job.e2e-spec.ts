@@ -23,25 +23,25 @@ describe('JobController (e2e)', () => {
       socialStatus: '2,3', // 多个逗号隔开
       financialStatus: '223',
       repution: '11',
-      dataType: '1',
-      alogorithm: '3',
-      intereedAddress: '0x11,0x22', // 多个逗号隔开
+      dataType: '3',
+      alogorithm: '1',
+      interestedAddress: '0x11;0x22', // 多个封号 隔开
       deliveryFrequency: '0 * * * *', // 参考下面注释
       deliveryMethod: '1',
     });
     /*
       ┌───────── minute (0 - 59)
-│ ┌─────── hour (0 - 23)
-│ │ ┌───── day of the month (1 - 31)
-│ │ │ ┌─── month (1 - 12)
-│ │ │ │ ┌─ day of the week (0 - 6) (Sunday to Saturday)
-│ │ │ │ │
-│ │ │ │ │
-│ │ │ │ │
-* * * * *
+      │ ┌─────── hour (0 - 23)
+      │ │ ┌───── day of the month (1 - 31)
+      │ │ │ ┌─── month (1 - 12)
+      │ │ │ │ ┌─ day of the week (0 - 6) (Sunday to Saturday)
+      │ │ │ │ │
+      │ │ │ │ │
+      │ │ │ │ │
+      * * * * *
 All times are in UTC
-
 */
+
     console.log('response', response);
     expect(response.status).toEqual(201);
     expect(response.body.result).toBeTruthy();
