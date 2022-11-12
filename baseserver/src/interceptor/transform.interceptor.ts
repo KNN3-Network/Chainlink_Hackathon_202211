@@ -35,7 +35,7 @@ export class TransformInterceptor<T>
       map((data) => ({
         code: 200,
         message: '',
-        result: data,
+        result: data || true,
       })),
     );
   }
