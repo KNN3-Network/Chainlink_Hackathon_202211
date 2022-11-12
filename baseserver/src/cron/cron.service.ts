@@ -33,18 +33,20 @@ export class CronService {
    * @param address
    * @returns
    */
-  async register(cron: string, address: string[]) {
+  async register(cron: string, address: string[], owner: string) {
     if (this.configService.get('IS_CRON') === '0') return true;
     // Connect to the network
     const provider = ethers.getDefaultProvider(
       'https://goerli.infura.io/v3/' + this.configService.get('INFURA_API_KEY'),
     );
 
+    // console.log("provider",provider);
+
     // Load the wallet to deploy the contract with
     const privateKey = process.env.PRIVATE_KEY;
 
     if (!privateKey) {
-      throw new Error('Please set your PRIVATE');
+      throw new Error('Please set your PRIVATE_KEY');
     }
 
     const wallet = new ethers.Wallet(privateKey, provider);
@@ -90,7 +92,7 @@ export class CronService {
     const tx = await cronUpkeepFactory
       .connect(wallet)
       .newCronUpkeepWithJob(encodeCronJobString);
-    console.log(tx);
+    console.log('cronUpkeepFactory', tx);
     const res = await tx.wait();
 
     let upkeep = '';
@@ -119,7 +121,7 @@ export class CronService {
         emptyBytes,
         upkeep,
         executeGas,
-        wallet.address,
+        owner,
         emptyBytes,
         amount,
         source,

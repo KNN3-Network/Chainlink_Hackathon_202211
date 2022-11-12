@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '../config/config.module';
 import { ConfigService } from '../config/config.service';
-import { JobModule } from '../job/job.module';
 import { CronModule } from './cron.module';
 import { CronService } from './cron.service';
 
@@ -40,7 +39,11 @@ describe('CronService', () => {
   jest.setTimeout(500000000);
 
   it('register', async () => {
-    await service.register('*/3 * * * *', []);
+    await service.register(
+      '*/3 * * * *',
+      [],
+      '0xE37917d6D650Edf014893e7cF8F7dC0D68D45E5e',
+    );
     expect('1').toBeDefined();
   });
 });

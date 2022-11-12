@@ -20,7 +20,8 @@ describe('JobController (e2e)', () => {
   it('post /cron', async () => {
     const response = await request(app.getHttpServer()).post('/cron').send({
       cron: '*/3 * * * *',
-      address: [], // 多个逗号隔开
+      address: [],
+      owner: '0xE37917d6D650Edf014893e7cF8F7dC0D68D45E5e',
     });
 
     console.log('response', response);
@@ -32,7 +33,8 @@ describe('JobController (e2e)', () => {
       .post('/cron')
       .send({
         cron: '*/3 * * * *',
-        address: ['0x2e21f5d32841cf8c7da805185a041400bf15f21a'], // 多个逗号隔开
+        address: ['0x2e21f5d32841cf8c7da805185a041400bf15f21a'],
+        owner: '0xE37917d6D650Edf014893e7cF8F7dC0D68D45E5e',
       });
 
     console.log('response', response);

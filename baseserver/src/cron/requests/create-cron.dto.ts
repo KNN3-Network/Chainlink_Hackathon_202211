@@ -10,4 +10,9 @@ export class CreateCronDto {
   @IsOptional()
   @IsArray()
   address: string[];
+
+  @ApiProperty({ type: 'string' })
+  @IsOptional()
+  @IsString()
+  owner: string;
 }

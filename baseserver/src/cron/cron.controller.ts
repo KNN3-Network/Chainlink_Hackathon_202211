@@ -31,6 +31,6 @@ export class CronController {
 
   @Post()
   async create(@Body() dto: CreateCronDto) {
-    return this.cronService.register(dto.cron, dto.address);
+    return this.cronService.register(dto.cron, dto.address, dto.owner);
   }
 }
