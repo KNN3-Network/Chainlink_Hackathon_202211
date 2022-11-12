@@ -10,10 +10,8 @@ import { CreateCronDto } from './requests';
 export class CronController {
   constructor(private readonly cronService: CronService) {}
   @Sse('sse')
-  sse(): Observable<MessageEvent> {
-    return interval(5000).pipe(
-      map((_) => ({ data: { hello: 'world' } } as MessageEvent)),
-    );
+  sse() {
+    return this.cronService.subscribe();
   }
 
   @Get()
@@ -31,6 +29,6 @@ export class CronController {
 
   @Post()
   async create(@Body() dto: CreateCronDto) {
-    return this.cronService.register(dto.cron, dto.address, dto.owner);
+    this.cronService.register(dto.cron, dto.address, dto.owner);
   }
 }

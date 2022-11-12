@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsOptional, IsString } from 'class-validator';
 
 export class CreateCronDto {
-  @ApiProperty({ type: 'string' })
+  @ApiProperty({ type: 'string',required: true})
   @IsString()
   cron: string;
 

@@ -30,7 +30,23 @@ async function main() {
   const tx = await cronUpkeepFactory.newCronUpkeepWithJob(encodeCronJobString);
   console.log(tx);
   const res = await tx.wait(1);
-  console.log(res);
+  console.log("res", res);
+
+  // cronUpkeepFactory.parseLog()
+
+  const event = res.events?.map((item) => {
+    console.log("item", item.event);
+    console.log(item.decode);
+    if (item.event == "NewCronUpkeepCreated") {
+      console.log(111);
+
+      console.log("0x" + item.data.slice(0, 66).slice(-40));
+    }
+  });
+
+  console.log("event", event);
+
+  // console.log("res", log?.decode);
 
   // 0xa277D00b381092aBb9796A4696CffC281182A4bA
 }

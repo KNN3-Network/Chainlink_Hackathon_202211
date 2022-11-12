@@ -23,9 +23,14 @@ export class TransformInterceptor<T>
   implements NestInterceptor<T, THttpSuccessResponse<T>>
 {
   intercept(
-    _context: ExecutionContext,
+    context: ExecutionContext,
     next: CallHandler,
   ): Observable<THttpSuccessResponse<T>> {
+    const [req] = context.getArgs();
+
+    // text/event-stream
+    if (req?.headers?.accept === 'text/event-stream') return next.handle();
+
     return next.handle().pipe(
       map((data) => ({
         code: 200,

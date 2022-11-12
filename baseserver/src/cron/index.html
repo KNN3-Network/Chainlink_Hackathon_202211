@@ -9,7 +9,7 @@
   <body>
     data
     <script type="text/javascript">
-      const eventSource = new EventSource('http://127.0.0.1:3001/cron/sse');
+      const eventSource = new EventSource('/cron/sse');
       eventSource.onmessage = ({ data }) => {
         console.log('data', data);
         const message = document.createElement('li');

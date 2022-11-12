@@ -20,11 +20,11 @@ export class CronService {
   }
 
   subscribe() {
-    return fromEvent(this.emitter, 'eventName');
+    return fromEvent(this.emitter, 'cron');
   }
 
   async emit(data) {
-    this.emitter.emit('eventName', { data });
+    this.emitter.emit('cron', { data });
   }
 
   /**
@@ -34,7 +34,16 @@ export class CronService {
    * @returns
    */
   async register(cron: string, address: string[], owner: string) {
-    if (this.configService.get('IS_CRON') === '0') return true;
+    if (this.configService.get('IS_CRON') === '0') {
+      this.emit({
+        progress: 1,
+      });
+      return true;
+    }
+
+    this.emit({
+      progress: 0,
+    });
     // Connect to the network
     const provider = ethers.getDefaultProvider(
       'https://goerli.infura.io/v3/' + this.configService.get('INFURA_API_KEY'),
@@ -95,6 +104,10 @@ export class CronService {
     console.log('cronUpkeepFactory', tx);
     const res = await tx.wait();
 
+    this.emit({
+      progress: 0.5,
+    });
+
     let upkeep = '';
     res.events?.map((item) => {
       if (item.event == 'NewCronUpkeepCreated') {
@@ -142,6 +155,9 @@ export class CronService {
       .transferAndCall(registrarAddress, amount, abiEncodedBytes);
     await tx1.wait();
 
+    this.emit({
+      progress: 1,
+    });
     return true;
   }
 }

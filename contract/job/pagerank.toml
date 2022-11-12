@@ -1,4 +1,4 @@
-contractAddress = "0xE5A18517eBA297555F22b70BafB21930e23D0c4E"
+contractAddress = "0x1698Dc1EBd90D77792e137802521a3bB06880Db2"
 maxTaskDuration = "0s"
 minContractPaymentLinkJuels = "0"
 name = "Pagerank-Job"
@@ -15,7 +15,7 @@ observationSource = """
                   abi="fulfillOracleRequest2(bytes32 requestId, uint256 payment, address callbackAddress, bytes4 callbackFunctionId, uint256 expiration, bytes calldata data)"
                   data="{\\"requestId\\": $(decode_log.requestId), \\"payment\\":   $(decode_log.payment), \\"callbackAddress\\": $(decode_log.callbackAddr), \\"callbackFunctionId\\": $(decode_log.callbackFunctionId), \\"expiration\\": $(decode_log.cancelExpiration), \\"data\\": $(encode_data)}"
                   ]
-    submit_tx    [type="ethtx" to="0xE5A18517eBA297555F22b70BafB21930e23D0c4E" data="$(encode_tx)"]
+    submit_tx    [type="ethtx" to="0x1698Dc1EBd90D77792e137802521a3bB06880Db2" data="$(encode_tx)"]
 
     decode_log -> fetch -> parse -> encode_data -> encode_tx -> submit_tx
 """
