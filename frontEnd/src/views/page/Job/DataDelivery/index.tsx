@@ -136,7 +136,7 @@ export default function DataDelivery() {
       if(autoType == '1' && date){
         deliveryFrequency = `${Number(date.split(':')[1])} ${Number(date.split(':')[0])} * * *`
       }
-      if(autoType == '2' && date){
+      if(autoType == '2' && date1){
         deliveryFrequency = `${Number(date1)} * * * *`
       }
     }
