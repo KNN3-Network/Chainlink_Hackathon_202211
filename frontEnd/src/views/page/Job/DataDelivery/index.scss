@@ -1,0 +1,102 @@
+.dataDelivery {
+    height: 100%;
+    width: 100%;
+    background: url("./../../../../static/img/bac5.png") no-repeat top left;
+    background-size: auto;
+    padding: 40px;
+
+    .con {
+        background: #FFFDF8;
+        width: 100%;
+        border: 1px solid #979797;
+        border-radius: 20px;
+        padding: 40px;
+        margin-top: 60px;
+        height: 600px;
+        position: relative;
+
+        .title {
+            height: 38px;
+            font-size: 32px;
+            font-family: Helvetica;
+            color: #000000;
+            line-height: 38px;
+            margin-bottom: 10px;
+        }
+
+        >.top {
+            margin-top: 40px;
+        }
+
+        .title-small {
+            height: 29px;
+            font-size: 24px;
+            font-family: Helvetica;
+            color: #000000;
+            line-height: 29px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            position: absolute;
+            top: 127px;
+            left: 180px;
+
+            >div {
+                height: 32px;
+            }
+
+            >div:nth-child(1) {
+                margin-bottom: 8px;
+            }
+        }
+
+        .result_tit {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .result_2_area {
+            overflow: hidden;
+
+            >div {
+                float: left;
+                width: calc(50% - 10px);
+            }
+
+            >div:nth-child(1) {
+                margin-right: 20px;
+            }
+        }
+
+        .result_3_tit {
+            margin-bottom: 10px;
+        }
+
+        .auto-type {
+            margin-left: 40px;
+        }
+    }
+
+    .job-create {
+        height: 60px;
+        line-height: 60px;
+        background: #FFFDF8;
+        width: 100%;
+        border: 1px solid #979797;
+        border-radius: 60px;
+        text-indent: 60px;
+        margin-top: 250px;
+    }
+}
+
+.dataDelivery-4{
+    background: url("./../../../../static/img/bac6.png") no-repeat bottom left;
+}
+
+.des1{
+    margin-top: 10px;
+}

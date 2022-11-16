@@ -1,0 +1,60 @@
+.dataProcessing {
+    height: 100%;
+    width: 100%;
+    background: url("./../../../../static/img/bac5.png") no-repeat top left;
+    background-size: auto;
+    padding: 40px;
+
+    .title {
+        height: 38px;
+        font-size: 32px;
+        font-family: Helvetica;
+        color: #000000;
+        line-height: 38px;
+        margin-bottom: 20px;
+    }
+
+    .con {
+        background: #FFFDF8;
+        width: 100%;
+        border: 1px solid #979797;
+        border-radius: 20px;
+        padding: 20px 40px;
+        margin-top: 60px;
+        height: 600px;
+    }
+
+    .step_1 {
+        .des {
+            font-size: 20px;
+            font-family: Helvetica;
+            color: #000000;
+            margin-bottom: 10px;
+
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+    .step_3_2{
+        .des1{
+            color:rgba(0, 0, 0, 0.4);
+            margin-bottom: 30px;
+        }
+        .des {
+            font-size: 20px;
+            font-family: Helvetica;
+            color: #000000;
+            margin-bottom: 10px;
+
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+    .step_4{
+        .radio{
+            margin-bottom: 40px;
+        }
+    }
+}

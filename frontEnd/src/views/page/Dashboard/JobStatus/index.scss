@@ -1,0 +1,35 @@
+.jobStatus{
+    height: 100%;
+    width: 100%;
+    background: url("./../../../../static/img/bac2.png") #FFFDF8 no-repeat right bottom;
+    >div{
+        padding: 60px;
+    }
+    .title {
+        font-size: 40px;
+        font-family: Helvetica-Bold, Helvetica;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 20px;
+    }
+    .con{
+        height: 400px;
+        background: #FFFDF8;
+        width: 100%;
+        border: 1px solid #979797;
+        border-radius: 20px;
+        padding: 20px;
+        .chainlink-primary-btn{
+            float: right;
+            margin: 20px 40px;
+        }
+    }
+    .edit{
+        margin-right: 10px;
+    }
+    .action{
+        >span{
+            cursor: pointer;
+        }
+    }
+}
