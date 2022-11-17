@@ -16,7 +16,7 @@ export default function Initialization() {
       <div className="content">
         <div className='left-con'>
           <p className="des">KNN3</p>
-          <p className="des">Data Process Job</p>
+          <p className="des">Data Job</p>
           <p className="des">Management Panel</p>
           <div className="btn-group-init">
             <div className="chainlink-primary-btn" onClick={() => routerTo('login')}>Login</div>
