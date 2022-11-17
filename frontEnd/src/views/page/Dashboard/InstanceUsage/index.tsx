@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './index.scss';
 import ChartLine from "./../components/LineEchart";
 
@@ -37,7 +37,7 @@ export default function InstanceUsage() {
 
   const [activeTabVal, setActiveTabVal] = useState(0);
 
-  const [optionsData, setOptionsData] = useState([]);
+  const [optionsData, ] = useState([]);
 
   return (
     <div className="instanceUsage">
@@ -47,7 +47,7 @@ export default function InstanceUsage() {
         <div className='tabs'>
           {
             tabs.map((t: any, i: number) =>
-              <div key={i} className={activeTabVal == i ? 'active' : ''} onClick={() => setActiveTabVal(i)}>{t.name}</div>
+              <div key={i} className={activeTabVal === i ? 'active' : ''} onClick={() => setActiveTabVal(i)}>{t.name}</div>
             )
           }
         </div>

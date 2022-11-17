@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Select } from 'antd';
-import { useHistory } from 'react-router-dom';
 import { chainInfo, routerActive } from './../../../../store/atom';
 import { useRecoilState } from 'recoil';
 import './index.scss';
@@ -17,9 +16,8 @@ export default function DataPreparation() {
 
   const [chainBaseInfo, setChainBaseInfo] = useRecoilState(chainInfo);
 
-  const [routerActiveStr, setRouterActiveStr] = useRecoilState(routerActive);
+  const [, setRouterActiveStr] = useRecoilState(routerActive);
 
-  const history = useHistory();
 
   const routerTo = (str: string) => {
     setChainBaseInfo((prev: any) => {

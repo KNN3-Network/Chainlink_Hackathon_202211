@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
 import { Table, Switch } from 'antd';
-import api from './../../../../api';
 import './index.scss';
 
 export default function JobStatus() {
@@ -62,7 +60,7 @@ export default function JobStatus() {
         <span className='action'>
           <span className='edit'>Edit Logs</span>
           {
-            record.status == '0' &&
+            record.status === '0' &&
             <span>Delete</span>
           }
 

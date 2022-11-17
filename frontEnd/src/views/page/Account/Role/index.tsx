@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { Table, Switch } from 'antd';
 import './index.scss';
 

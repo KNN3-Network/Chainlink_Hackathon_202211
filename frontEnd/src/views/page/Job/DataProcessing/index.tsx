@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { UploadOutlined } from '@ant-design/icons';
-import { Select, Radio, Space, Input, Upload, Button } from 'antd';
-import { useHistory } from 'react-router-dom';
+import { Radio, Space, Input, Upload, Button } from 'antd';
 import { chainInfo, routerActive } from './../../../../store/atom';
 import { useRecoilState } from 'recoil';
 import './index.scss';
 const { TextArea } = Input;
 
 export default function DataProcessing() {
-
-  const history = useHistory();
 
   const [dataType, setDataType] = useState('3');
 
@@ -23,7 +20,7 @@ export default function DataProcessing() {
 
   const [chainBaseInfo, setChainBaseInfo] = useRecoilState(chainInfo);
 
-  const [routerActiveStr, setRouterActiveStr] = useRecoilState(routerActive);
+  const [, setRouterActiveStr] = useRecoilState(routerActive);
 
   const onChangeScriptType = (e: any) => {
     console.log('radio checked', e.target.value);
@@ -31,7 +28,7 @@ export default function DataProcessing() {
   };
 
   const processNext = () => {
-    if(step == 'init'){
+    if(step === 'init'){
       setStep(`step_${dataType}`)
     }else{
       setChainBaseInfo((prev: any) => {
@@ -51,8 +48,8 @@ export default function DataProcessing() {
   }
 
   const getResult = () => {
-    if(step == 'step_3'){
-      if(alogorithm == '4'){
+    if(step === 'step_3'){
+      if(alogorithm === '4'){
         setRouterActiveStr("dataDelivery");
       }else{
         setStep(`step_3_${alogorithm}`)
@@ -61,10 +58,10 @@ export default function DataProcessing() {
   }
 
   const back = () => {
-    if(step == 'init'){
+    if(step === 'init'){
       setRouterActiveStr("dataPreparation");
     }else{
-      if(step.split('_').length == 2){
+      if(step.split('_').length === 2){
         setStep('init')
       }else{
         setStep(`step_${step.split('_')[1]}`)

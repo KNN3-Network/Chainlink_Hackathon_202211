@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Input, Radio, Space, DatePicker, Progress, Spin, TimePicker, message } from 'antd';
+import { useState, useCallback } from 'react';
+import { Input, Radio, Space, Progress, Spin, TimePicker } from 'antd';
 import useWeb3Context from '../../../../hooks/useWeb3Context';
 import useChainlinkContract from '../../../../contract/useChainlinkContract';
-import { useHistory } from 'react-router-dom';
 import { chainInfo, routerActive } from './../../../../store/atom';
 import api from './../../../../api';
 import { useRecoilState } from 'recoil';
-import { baseURL } from '../../../../config';
 import ChainlinkAbi from "./../../../../contract/abi/Chainlink.json";
 import moment from 'moment';
 import './index.scss';
@@ -17,7 +15,7 @@ const dateFormat1 = 'mm';
 const { TextArea } = Input;
 
 export default function DataDelivery() {
-  const {account, connectWallet} = useWeb3Context();
+  const {account, } = useWeb3Context();
 
   const [frequency, setFrequency] = useState('1');
 
@@ -31,13 +29,12 @@ export default function DataDelivery() {
 
   const [date1, setDate1] = useState("");
 
-  const [pageRankResult, setPageRankResult] = useState("");
 
   const [autoType, setAutoType] = useState("1");
 
-  const [routerActiveStr, setRouterActiveStr] = useRecoilState(routerActive);
+  const [, setRouterActiveStr] = useRecoilState(routerActive);
 
-  const [chainBaseInfo, setChainBaseInfo] = useRecoilState(chainInfo);
+  const [chainBaseInfo, ] = useRecoilState(chainInfo);
 
   const [progress, setProgress] = useState(0);
 
@@ -45,13 +42,7 @@ export default function DataDelivery() {
 
   const [str, setStr] = useState("")
 
-  const history = useHistory();
-
   const chainlinkContract:any = useChainlinkContract()
-
-  const routerTo = (str: string) => {
-    history.push(str)
-  }
 
   const onChangeFrequency = (e: any) => {
     console.log('radio checked', e.target.value);
@@ -136,11 +127,11 @@ export default function DataDelivery() {
 
   const getFrequency = () => {
     let deliveryFrequency = '';
-    if(frequency == '1'){
-      if(autoType == '1' && date){
+    if(frequency === '1'){
+      if(autoType === '1' && date){
         deliveryFrequency = `${Number(date.split(':')[1])} ${Number(date.split(':')[0])} * * *`
       }
-      if(autoType == '2' && date1){
+      if(autoType === '2' && date1){
         deliveryFrequency = `${Number(date1)} * * * *`
       }
     }
@@ -158,7 +149,7 @@ export default function DataDelivery() {
     })
     if(res){
       setLoading(false);
-      if (frequency == '1') {
+      if (frequency === '1') {
         // requestCronJob();
         setStep('delivery-4');
       } else {
@@ -183,7 +174,7 @@ export default function DataDelivery() {
     <Spin spinning={loading} delay={500}>
     <div className={step === 'delivery-4' ? 'dataDelivery dataDelivery-4' : 'dataDelivery'}>
       {
-        step == 'init' &&
+        step === 'init' &&
         <div className="con">
           <div className="title">Please select data delivery frequency</div>
           <Radio.Group value={frequency} onChange={onChangeFrequency}>
@@ -218,14 +209,14 @@ export default function DataDelivery() {
           <div className='date'>
             <div>
               {
-                autoType === '1' && frequency == '1' &&
+                autoType === '1' && frequency === '1' &&
                 <TimePicker  format={dateFormat} value={date ? moment(date, dateFormat) : null} onChange={(date: any, dateString: string) => setDate(dateString)} />
               }
 
             </div>
             <div>
               {
-                autoType === '2' && frequency == '1' &&
+                autoType === '2' && frequency === '1' &&
                 <TimePicker  format={dateFormat1} value={date1 ? moment(date1, dateFormat1) : null} onChange={(date: any, dateString: string) => setDate1(dateString)} />
               }
             </div>
@@ -234,16 +225,16 @@ export default function DataDelivery() {
       
       }
       {
-        step == 'delivery-4' &&
+        step === 'delivery-4' &&
         <div className="delivery-4-con">
           <div className='job-create'>Your job has been created</div>
         </div>
       }
       {
-        step == 'delivery-5' &&
+        step === 'delivery-5' &&
         <div className="con">
           <div><Progress strokeLinecap="butt" percent={progressOneTime} /></div>
-          <div className='des1'>{progressOneTime == 100 ? 'Your data has been uploaded successfully' : 'Your data is being uploaded to Smart Contract'}</div>
+          <div className='des1'>{progressOneTime === 100 ? 'Your data has been uploaded successfully' : 'Your data is being uploaded to Smart Contract'}</div>
           <div className='result_tit'>Below is how you can access the data from smart contract</div>
           <div>
             <TextArea rows={18} value={str}/>
@@ -251,10 +242,10 @@ export default function DataDelivery() {
         </div>
       }
       {
-        step == 'delivery-6' &&
+        step === 'delivery-6' &&
         <div className="con">
           <div><Progress strokeLinecap="butt" percent={progress} /></div>
-          <div className='des1'>{progress == 100 ? 'Your Job has been registered successfully' : 'Your Job is being registered on Chainlink'}</div>
+          <div className='des1'>{progress === 100 ? 'Your Job has been registered successfully' : 'Your Job is being registered on Chainlink'}</div>
           <div className='result_tit'>Below is how you can access the data from smart contract</div>
           <div>
             <TextArea rows={18} value={str}/>
@@ -262,7 +253,7 @@ export default function DataDelivery() {
         </div>
       }
       {
-        step == 'init' &&
+        step === 'init' &&
         <div className='btn-group'>
           <div className="chainlink-primary-btn" onClick={saveJob}>Next</div>
           <div className="chainlink-default-btn" onClick={() => back()}>Back</div>
@@ -270,7 +261,7 @@ export default function DataDelivery() {
       }
 
       {
-        step == 'delivery-4' &&
+        step === 'delivery-4' &&
         <div className='btn-group'>
           <div className="chainlink-primary-btn" onClick={() => oneTimeLation()}>One Time</div>
           <div className="chainlink-primary-btn" onClick={() => requestCronJob()}>Register on Chainlink Automation</div>
@@ -279,14 +270,14 @@ export default function DataDelivery() {
       }
 
       {
-        step == 'delivery-5' &&
+        step === 'delivery-5' &&
         <div className='btn-group'>
           <div className="chainlink-default-btn" onClick={() => back()}>Back</div>
         </div>
       }
 
       {
-        step == 'delivery-6' &&
+        step === 'delivery-6' &&
         <div className='btn-group'>
           <div className="chainlink-primary-btn"  onClick={() => window.open('https://automation.chain.link/goerli/')}>View Job Status from Chainlink Automation</div>
           <div className="chainlink-default-btn" onClick={() => back()}>Back</div>
