@@ -9,9 +9,9 @@ Data processing job on hybrid smart contract is not easy to manage.
 
 ## Directory Description    
 
-|_baseserver       
-|_contract
-|_frontEnd
+|_baseserver           
+|_contract    
+|_frontEnd    
 
 ## Deploy
 
