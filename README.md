@@ -83,7 +83,7 @@ Data processing job on hybrid smart contract is not easy to manage.
   │   └── types.ts
   ├── tsconfig.json
 ```
-**contract** is core smart contract code of the job, deliver data result to polygon using Chainlink Node and allow users to fetch data from polygon directly
+**contract** contains core smart contract code of the job, deliver data result to polygon using Chainlink Node and allow users to fetch data from polygon directly
 
  #### deploy
  ```
