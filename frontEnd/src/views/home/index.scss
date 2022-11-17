@@ -1,0 +1,127 @@
+.page-home{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: #000;
+    
+    .page-left-content{
+      width: 300px;
+      height: calc(100% - 80px);
+      padding: 40px 0px;
+      position: relative;
+      border: 2px solid #979797;
+      margin: 40px 20px;
+      border-radius: 20px;
+      background: #FFFDF8;
+      &-info{
+        height: 100px;
+        width: 100%;
+        margin: 0 auto;
+        padding-left: 40px;
+        border-bottom: 2px solid #979797;
+        >div{
+          float: left;
+        }
+        &-head{
+          width: 60px;
+          height: 60px;
+          background: rgb(252, 50, 0);
+          border-radius: 10px;
+          line-height: 60px;
+          text-align: center;
+          color: #fff;
+          font-size: 14px;
+          margin-right: 10px;
+          font-family: "Jura";
+          >img{
+            margin-top: 20px;
+          }
+        }
+        &-name{
+          font-weight: 600;
+          font-size: 16px;
+          margin-bottom: 5px;
+          margin-top: 8px;
+        }
+        &-email{
+          font-size: 12px;
+        }
+        &-email::before{
+            width: 10px;
+            height: 10px;
+            background: #00FF02;
+            border-radius: 50%;
+            content: '';
+            display: inline-block;
+            margin-right: 4px;
+        }
+      }
+    }
+    .page-right-content{
+      width: calc(100% - 340px);
+      height: 100%;
+      overflow: auto;
+    }
+  }
+
+  .menu{
+    .menu-first{
+        margin-top: 30px;
+        >div:nth-child(1){
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #979797;
+            border-left: none;
+            width: 98%;
+            border-radius: 0px 10px 10px 0;
+            >div{
+                float: left;
+                text-align: center;
+                cursor: pointer;
+                color: rgba(0, 0, 0, .4);
+            }
+            >div:nth-child(1){
+                width: calc(100% - 60px);
+            }
+            >div:nth-child(2){
+                width: 60px;
+            }
+            .icon-out{
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
+        .menu-first-active{
+            position: relative;
+            span{
+                color: #000;
+            }
+            .bac{
+                width: 20px;
+                height: 38px;
+                background: #FF3300;
+                position: absolute;
+                left: -10px;
+                border-radius: 5px;
+            }
+        }
+    }
+    .menu-second{
+        >div{
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #979797;
+            border-left: none;
+            width: 80%;
+            border-radius: 0px 10px 10px 0;
+            color: rgba(0, 0, 0, .4);
+            margin-top: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .menu-second-active{
+            font-size: 16px;
+            color: #000;
+        }
+    }
+  }

@@ -1,0 +1,33 @@
+.jobInitialization {
+    height: 90%;
+    width: 100%;
+    margin: 5% 0;
+    background: url("./../../../../static/img/bac3.png") no-repeat right bottom;
+    background-size: contain;
+    position: relative;
+
+    .con {
+        height: 700px;
+        background: #FFFDF8;
+        width: 500px;
+        border: 1px solid #979797;
+        border-radius: 20px;
+        padding: 60px 40px;
+        position: absolute;
+        left: 40%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        >div:nth-child(1) {
+            font-size: 24px;
+            font-family: Helvetica-Bold, Helvetica;
+            font-weight: bold;
+            color: #000000;
+            margin-bottom: 40px;
+        }
+        .chainlink-primary-btn{
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+    }
+}

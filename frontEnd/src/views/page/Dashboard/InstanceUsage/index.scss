@@ -1,0 +1,90 @@
+.instanceUsage {
+    width: 100%;
+    padding: 60px;
+
+    .title_1 {
+        font-size: 40px;
+        font-family: Helvetica-Bold, Helvetica;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 20px;
+    }
+
+    .con_1 {
+        height: 400px;
+        background: #FFFDF8;
+        width: 100%;
+        border: 1px solid #979797;
+        border-radius: 20px;
+        padding: 20px;
+
+        .title_2 {
+            font-size: 24px;
+            font-family: Helvetica;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            overflow: hidden;
+
+            >div {
+                float: left;
+                padding: 10px 20px;
+                border: 1px dashed #979797;
+                margin-bottom: 20px;
+                margin-right: 10px;
+                font-size: 12px;
+                cursor: pointer;
+                color: #979797;
+            }
+            >div:hover{
+                color: rgb(255, 89, 60);
+                background:rgb(255, 244, 242);
+            }
+            .active{
+                color: rgb(255, 89, 60);
+                background:rgb(255, 244, 242);
+            }
+        }
+        .echart{
+            height: calc(100% - 100px);
+        }
+        
+    }
+    .con_2{
+        height: 300px;
+        margin: 20px 0;
+        background: #FFFDF8;
+        width: 100%;
+        border: 1px solid #979797;
+        border-radius: 20px;
+        padding: 20px;
+        .title_2 {
+            font-size: 24px;
+            font-family: Helvetica;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+        .con_bar{
+            height: calc(100% - 40px);
+            display: flex;
+            padding: 20px 0;
+            >div{
+                flex: 1;
+                background: url("./../../../../static/img/bar.png") #FFFDF8 no-repeat left top;
+                background-size: contain;
+                position: relative;
+                .des{
+                    position: absolute;
+                    left: 200px;
+                    top: 60px;
+                    >div:nth-child(1){
+                        font-weight: 600;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

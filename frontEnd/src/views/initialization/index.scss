@@ -1,0 +1,46 @@
+.initialization {
+    height: 100%;
+    width: 100%;
+
+    .content {
+        height: 700px;
+        width: 1450px;
+        background: #FFFDF8;
+        margin: 0 auto;
+        border-radius: 40px;
+        box-shadow: 0px 0px 50px #ccc;
+        margin-top: calc((100vh - 700px) / 2);
+        display: flex;
+        
+        >div {
+            flex: 1;
+        }
+
+        img {
+            height: 500px;
+            width: 600px;
+            margin-top: 100px;
+        }
+
+        .des {
+            font-family: BuiltTitlingRg-Bold, BuiltTitlingRg;
+            font-weight: bold;
+            color: #000000;
+            font-size: 65px;
+            text-indent: 50px;
+            height: 65px;
+        }
+        .left-con{
+            margin-top: 180px;
+        }
+        .btn-group-init{
+            overflow: hidden;
+            margin-left: 50px;
+            margin-top: 50px;
+            >div{
+                float: left;
+                margin-right: 40px;
+            }
+        }
+    }
+}
