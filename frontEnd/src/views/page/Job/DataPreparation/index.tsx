@@ -57,6 +57,7 @@ export default function DataPreparation() {
               {
                 value: 'address',
                 label: 'address',
+                disabled:true
               }
             ]}
           />
@@ -108,10 +109,12 @@ export default function DataPreparation() {
               {
                 value: '1',
                 label: 'Token holding',
+                disabled:true
               },
               {
                 value: '2',
                 label: 'NFT holding',
+                disabled:true
               }
             ]}
           />

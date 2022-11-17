@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Input, Radio, Space, Progress, Spin, TimePicker } from 'antd';
+import { Input, Radio, Space, Progress, Spin, TimePicker, message } from 'antd';
 import useWeb3Context from '../../../../hooks/useWeb3Context';
 import useChainlinkContract from '../../../../contract/useChainlinkContract';
 import { chainInfo, routerActive } from './../../../../store/atom';
@@ -141,6 +141,29 @@ export default function DataDelivery() {
 
   const saveJob = async () => {
     setLoading(true);
+
+    setTimeout(()=>{
+
+      setLoading(false);
+      message.success('Success')
+
+      setStr((prev: any) => {
+        return `
+        Call Method:
+  
+        const ChainlinkAbi = ${JSON.stringify(ChainlinkAbi)}
+        const res = new Web3.eth.Contract(ChainlinkAbi, '0x78880dEFC42Fc3bee64F71A480fEc0032Ad6dBA7').methods.getPageRank().call()`
+      })
+
+      if(frequency === '1'){
+        setStep('delivery-4');
+      }else{
+        setStep('delivery-5');
+      }
+    }, 1000)
+
+    return 
+
     const res: any = await api.job.create({
       ...chainBaseInfo,
       deliveryMethod,
@@ -169,6 +192,12 @@ export default function DataDelivery() {
       getPageRank();
     },60000)
     setStep('delivery-5');
+  }
+
+  const ViewOnScan = () => {
+    return <div  className='chainlink-primary-btn'>
+      <a style={{color: 'white'}} href="https://mumbai.polygonscan.com/address/0xF0520c0192D74908930B24B8F76E227548860F7b#readContract" target="_blank">View on Scan</a>
+    </div> 
   }
 
   return (
@@ -229,6 +258,7 @@ export default function DataDelivery() {
         step === 'delivery-4' &&
         <div className="delivery-4-con">
           <div className='job-create'>Your job has been created</div>
+          {/* <ViewOnScan /> */}
         </div>
       }
       {
@@ -273,6 +303,7 @@ export default function DataDelivery() {
       {
         step === 'delivery-5' &&
         <div className='btn-group'>
+          <ViewOnScan />
           <div className="chainlink-default-btn" onClick={() => back()}>Back</div>
         </div>
       }
@@ -280,6 +311,7 @@ export default function DataDelivery() {
       {
         step === 'delivery-6' &&
         <div className='btn-group'>
+          <ViewOnScan />
           <div className="chainlink-primary-btn"  onClick={() => window.open('https://automation.chain.link/goerli/')}>View Job Status from Chainlink Automation</div>
           <div className="chainlink-default-btn" onClick={() => back()}>Back</div>
         </div>
