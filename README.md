@@ -1,5 +1,7 @@
 # KNN3 Data Job Management Panel
 
+## [Project Document](https://docs.google.com/document/d/1ikYChJuXXjDaH_4F2_oQfuXcyZz37IKHIgj4tynmn-U/edit)
+
 ## Problem to solve   
 Data processing job on hybrid smart contract is not easy to manage.   
 - Smart contract do not has decent data processing capability.
