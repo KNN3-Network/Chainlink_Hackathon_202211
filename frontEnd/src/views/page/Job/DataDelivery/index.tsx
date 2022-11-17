@@ -116,18 +116,22 @@ export default function DataDelivery() {
   }
 
   const listenCronStatus = useCallback (async() => {  
-    const eventSource = new EventSource(`${baseURL}/cron/sse`);
-    eventSource.onmessage = ({ data }) => {
-      console.log('data', data);
-      if(JSON.parse(data).progress == -1){
-        message.error('error')
-      }else{
-        setProgress(JSON.parse(data).progress * 100)
-        if(JSON.parse(data).progress == 1){
-          getPageRank()
-        }
-      }
-    };
+    // const eventSource = new EventSource(`${baseURL}/cron/sse`);
+    // eventSource.onmessage = ({ data }) => {
+    //   console.log('data', data);
+    //   if(JSON.parse(data).progress == -1){
+    //     message.error('error')
+    //   }else{
+    //     setProgress(JSON.parse(data).progress * 100)
+    //     if(JSON.parse(data).progress == 1){
+    //       getPageRank()
+    //     }
+    //   }
+    // };
+    setTimeout(() => {
+      setProgress(100);
+      getPageRank();
+    },3000)
   }, [])
 
   const getFrequency = () => {

@@ -13,16 +13,16 @@ export default function useChainlinkContract() {
     },
     async requestPageRankInfo() {
       const func = contract.methods.requestPageRankInfo(
-        "0x1698Dc1EBd90D77792e137802521a3bB06880Db2",
-        "f0931bbb43e64ae080265cbea9afeaed"
+        "0x33C1AaE1DA7Da9D685Cb9B250afAE04b1312C7Af",
+        "2d771a437d224f0babb7e10a65c74a5d"
       );
       return await sendTx(func);
     },
     async requestPageRankInfoParams(ids) {
       // ids should be array
       const func = contract.methods.requestPageRankInfoParams(
-        "0x1698Dc1EBd90D77792e137802521a3bB06880Db2",
-        "5661dacc1693401490405d8e232f6169",
+        "0x33C1AaE1DA7Da9D685Cb9B250afAE04b1312C7Af",
+        "0cac20da440b4d5882b8bc6dcd02cbe8",
         ids
       );
       return await sendTx(func);
