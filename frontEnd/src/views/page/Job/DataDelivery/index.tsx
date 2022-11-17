@@ -36,7 +36,8 @@ export default function DataDelivery() {
 
   const [chainBaseInfo, ] = useRecoilState(chainInfo);
 
-  const [progress, setProgress] = useState(0);
+  // todo, need to take back
+  const [progress, setProgress] = useState(100);
 
   const [progressOneTime, setProgressOneTime] = useState(0);
 
