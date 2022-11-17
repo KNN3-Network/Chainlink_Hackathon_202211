@@ -162,24 +162,24 @@ export default function DataDelivery() {
       }
     }, 1000)
 
-    return 
+    // return 
 
-    const res: any = await api.job.create({
-      ...chainBaseInfo,
-      deliveryMethod,
-      deliveryFrequency: getFrequency(),
-      socialStatus:chainBaseInfo.socialStatus.join(','),
-      interestedAddress:chainBaseInfo.interestedAddress.toLowerCase()
-    })
-    if(res){
-      setLoading(false);
-      if (frequency === '1') {
-        // requestCronJob();
-        setStep('delivery-4');
-      } else {
-        oneTimeLation();
-      }
-    }
+    // const res: any = await api.job.create({
+    //   ...chainBaseInfo,
+    //   deliveryMethod,
+    //   deliveryFrequency: getFrequency(),
+    //   socialStatus:chainBaseInfo.socialStatus.join(','),
+    //   interestedAddress:chainBaseInfo.interestedAddress.toLowerCase()
+    // })
+    // if(res){
+    //   setLoading(false);
+    //   if (frequency === '1') {
+    //     // requestCronJob();
+    //     setStep('delivery-4');
+    //   } else {
+    //     oneTimeLation();
+    //   }
+    // }
   }
 
   const oneTimeLation = () => {
@@ -195,8 +195,8 @@ export default function DataDelivery() {
   }
 
   const ViewOnScan = () => {
-    return <div  className='chainlink-primary-btn'>
-      <a style={{color: 'white'}} href="https://mumbai.polygonscan.com/address/0xF0520c0192D74908930B24B8F76E227548860F7b#readContract" target="_blank">View on Scan</a>
+    return <div className='chainlink-primary-btn'>
+      <a rel="noreferrer" style={{color: 'white'}} href="https://mumbai.polygonscan.com/address/0xF0520c0192D74908930B24B8F76E227548860F7b#readContract" target="_blank">View on Scan</a>
     </div> 
   }
 
