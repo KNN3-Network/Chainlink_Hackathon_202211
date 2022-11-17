@@ -37,6 +37,18 @@ Data processing job on hybrid smart contract is not easy to manage.
   1. Job creation, edit, update
   2. Register job in Chainlink automation
  
+ #### deploy
+ dev
+ ```
+ pnpm install
+ pnpm start:dev
+ ```
+ production
+ ```
+ pnpm install
+ pnpm build
+ pm2 start dist/main.js
+ ```
  
 |_contract  
 ```
@@ -73,8 +85,16 @@ Data processing job on hybrid smart contract is not easy to manage.
 ```
 **contract** is core smart contract code of the job, deliver data result to polygon using Chainlink Node and allow users to fetch data from polygon directly
 
-**deploy address**  
+ #### deploy
+ ```
+ yarn install
+ yarn hardhat compile
+ yarn hardhat deploy:KNN3ProfileClient --network network
+ ```
+ 
+ **deploy address**  
   * mumbai:[0xF0520c0192D74908930B24B8F76E227548860F7b](https://mumbai.polygonscan.com/address/0xF0520c0192D74908930B24B8F76E227548860F7b)
+
 
 |_frontEnd    
 ```
