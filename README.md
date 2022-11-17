@@ -94,7 +94,7 @@ Data processing job on hybrid smart contract is not easy to manage.
  
  **deploy address**  
   * mumbai:[0xF0520c0192D74908930B24B8F76E227548860F7b](https://mumbai.polygonscan.com/address/0xF0520c0192D74908930B24B8F76E227548860F7b)
-
+  * goerli:[0x78880dEFC42Fc3bee64F71A480fEc0032Ad6dBA7](https://goerli.etherscan.io/address/0x78880dEFC42Fc3bee64F71A480fEc0032Ad6dBA7)
 
 |_frontEnd    
 ```
