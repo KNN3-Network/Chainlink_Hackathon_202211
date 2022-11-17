@@ -73,6 +73,7 @@ export const Web3ContextProvider = ({ children }) => {
       setWeb3(new Web3(endpoint));
       console.log(error);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const resetWallet = useCallback(async () => {
@@ -81,6 +82,7 @@ export const Web3ContextProvider = ({ children }) => {
     }
     setAccount("");
     await web3Modal.clearCachedProvider();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const estimateGas = async (func, value = 0) => {
@@ -127,11 +129,11 @@ export const Web3ContextProvider = ({ children }) => {
           });
         })
         .on("receipt", async (receipt) => {
-          const txnHash = receipt?.transactionHash;
+          // const txnHash = receipt?.transactionHash;
           toast.success(actionMapping[1], {});
         })
         .on("error", async (err, txn) => {
-          const txnHash = txn?.transactionHash;
+          // const txnHash = txn?.transactionHash;
 
           if (err.code === 4001) {
             toast.error("User canceled action");
@@ -162,10 +164,12 @@ export const Web3ContextProvider = ({ children }) => {
         }
       });
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account]);
 
   useEffect(() => {
     connectWallet();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

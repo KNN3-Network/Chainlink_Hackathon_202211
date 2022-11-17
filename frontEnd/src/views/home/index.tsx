@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './index.scss';
 import Logo from '../../static/img/logo.png';
 import useChainlinkContract from '../../contract/useChainlinkContract';
-import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom';
-import { RouteComponentProps, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { routerConfig } from './../../router';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
@@ -23,22 +23,24 @@ export default function Home() {
 
   useEffect(() => {
     refreshRouterActive();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history.location.pathname]);
 
   useEffect(() => {
     if(routerActiveStr){
       history.push(`/home/job/${routerActiveStr}`)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [routerActiveStr]);
 
   const refreshRouterActive = () => {
     setRouters((prev: any) => {
-      if (history.location.pathname == '/home') {
+      if (history.location.pathname === '/home') {
         prev[0]['active'] = true;
         prev[0]['children'][0]['active'] = true;
       } else {
-        prev.map((t: any, i: number) => {
-          t.children.map((h: any, r: number) => {
+        prev.forEach((t: any, i: number) => {
+          t.children.forEach((h: any, r: number) => {
             if (h.path === history.location.pathname) {
               prev[i]['active'] = true;
               prev[i]['children'][r]['active'] = true;
@@ -54,7 +56,7 @@ export default function Home() {
 
   const menuClick = (i: number) => {
     setRouters((prev: any) => {
-      prev.map((t: any, index: number) => {
+      prev.forEach((t: any, index: number) => {
         if (i !== index) t.active = false;
       })
       prev[i]['active'] = !prev[i]['active'];
@@ -64,8 +66,8 @@ export default function Home() {
 
   const menuSecondClick = (index: number, i: number) => {
     setRouters((prev: any) => {
-      prev.map((t: any, y: number) => {
-        t.children.map((h: any, r: number) => {
+      prev.forEach((t: any, y: number) => {
+        t.children.forEach((h: any, r: number) => {
           h.active = false;
         })
       })
@@ -87,6 +89,7 @@ export default function Home() {
       return
     }
     getPageRank();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account])
 
   return (

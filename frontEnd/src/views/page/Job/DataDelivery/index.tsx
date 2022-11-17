@@ -123,6 +123,7 @@ export default function DataDelivery() {
       setProgress(100);
       getPageRank();
     },3000)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getFrequency = () => {

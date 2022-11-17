@@ -191,6 +191,7 @@ const ChartLine = (props: any) => {
         const HTMLElement = document.getElementById(id) as HTMLElement;
         const chart = echarts.init(HTMLElement);
         chart.setOption(option);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [optionsData]);
     return (
         <div id={id} style={{ width: width, height: height }}>222</div>

@@ -73,6 +73,7 @@ export default function DataProcessing() {
     setInterestedAddress(chainBaseInfo.interestedAddress);
     setDataType(chainBaseInfo.dataType || '3');
     setAlogorithm(chainBaseInfo.alogorithm || '1');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

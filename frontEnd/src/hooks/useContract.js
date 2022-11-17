@@ -8,5 +8,6 @@ export default function useContract(ABI, address) {
       return;
     }
     return new web3.eth.Contract(ABI, address);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [web3]);
 }

@@ -41,6 +41,7 @@ export default function DataPreparation() {
     setSocialStatus(chainBaseInfo.socialStatus);
     setFinancialStatus(chainBaseInfo.financialStatus);
     setRepution(chainBaseInfo.repution);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

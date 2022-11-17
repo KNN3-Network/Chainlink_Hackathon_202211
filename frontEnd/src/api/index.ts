@@ -22,6 +22,8 @@ const job = {
   createCron: async (params?: any) => api.post("/cron", params),
 };
 
-export default {
+const apiEx = {
   job
-};
+}
+
+export default apiEx;
