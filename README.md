@@ -33,6 +33,10 @@ Data processing job on hybrid smart contract is not easy to manage.
   └── tsconfig.json
  ```
  
+ **baseserver** is the back-end service of the Job Management Panel consisting of the functionality below:
+  1. Job creation, edit, update
+  2. Register job in Chainlink automation
+ 
  
 |_contract  
 ```
@@ -67,7 +71,10 @@ Data processing job on hybrid smart contract is not easy to manage.
   │   └── types.ts
   ├── tsconfig.json
 ```
+**contract** is core smart contract code of the job, deliver data result to polygon using Chainlink Node and allow users to fetch data from polygon directly
 
+**deploy address**  
+  * mumbai:[0xF0520c0192D74908930B24B8F76E227548860F7b](https://mumbai.polygonscan.com/address/0xF0520c0192D74908930B24B8F76E227548860F7b)
 
 |_frontEnd    
 ```
