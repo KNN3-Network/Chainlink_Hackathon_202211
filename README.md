@@ -7,5 +7,11 @@ Data processing job on hybrid smart contract is not easy to manage.
 - Data processing jobs should be conveniently managed and kept in reliable (decentralized) manner.    
 
 
+## Directory Description    
 
+|_baseserver       
+|_contract
+|_frontEnd
+
+## Deploy
 
