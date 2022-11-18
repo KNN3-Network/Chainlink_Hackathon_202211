@@ -4,6 +4,7 @@ import useWeb3Context from '../../../../hooks/useWeb3Context';
 import useChainlinkContract from '../../../../contract/useChainlinkContract';
 import { chainInfo, routerActive } from './../../../../store/atom';
 import api from './../../../../api';
+import { baseURL } from '../../../../config';
 import { useRecoilState } from 'recoil';
 import ChainlinkAbi from "./../../../../contract/abi/Chainlink.json";
 import moment from 'moment';
@@ -108,18 +109,18 @@ export default function DataDelivery() {
   }
 
   const listenCronStatus = useCallback (async() => {  
-    // const eventSource = new EventSource(`${baseURL}/cron/sse`);
-    // eventSource.onmessage = ({ data }) => {
-    //   console.log('data', data);
-    //   if(JSON.parse(data).progress == -1){
-    //     message.error('error')
-    //   }else{
-    //     setProgress(JSON.parse(data).progress * 100)
-    //     if(JSON.parse(data).progress == 1){
-    //       getPageRank()
-    //     }
-    //   }
-    // };
+    const eventSource = new EventSource(`${baseURL}/cron/sse`);
+    eventSource.onmessage = ({ data }) => {
+      console.log('data', data);
+      if(JSON.parse(data).progress === -1){
+        message.error('error')
+      }else{
+        setProgress(JSON.parse(data).progress * 100)
+        if(JSON.parse(data).progress === 1){
+          getPageRank()
+        }
+      }
+    };
     setTimeout(() => {
       setProgress(100);
       getPageRank();
@@ -142,45 +143,22 @@ export default function DataDelivery() {
 
   const saveJob = async () => {
     setLoading(true);
-
-    setTimeout(()=>{
-
+    const res: any = await api.job.create({
+      ...chainBaseInfo,
+      deliveryMethod,
+      deliveryFrequency: getFrequency(),
+      socialStatus:chainBaseInfo.socialStatus.join(','),
+      interestedAddress:chainBaseInfo.interestedAddress.toLowerCase()
+    })
+    if(res){
       setLoading(false);
-      message.success('Success')
-
-      setStr((prev: any) => {
-        return `
-        Call Method:
-  
-        const ChainlinkAbi = ${JSON.stringify(ChainlinkAbi)}
-        const res = new Web3.eth.Contract(ChainlinkAbi, '0x78880dEFC42Fc3bee64F71A480fEc0032Ad6dBA7').methods.getPageRank().call()`
-      })
-
-      if(frequency === '1'){
+      if (frequency === '1') {
+        // requestCronJob();
         setStep('delivery-4');
-      }else{
-        setStep('delivery-5');
+      } else {
+        oneTimeLation();
       }
-    }, 1000)
-
-    // return 
-
-    // const res: any = await api.job.create({
-    //   ...chainBaseInfo,
-    //   deliveryMethod,
-    //   deliveryFrequency: getFrequency(),
-    //   socialStatus:chainBaseInfo.socialStatus.join(','),
-    //   interestedAddress:chainBaseInfo.interestedAddress.toLowerCase()
-    // })
-    // if(res){
-    //   setLoading(false);
-    //   if (frequency === '1') {
-    //     // requestCronJob();
-    //     setStep('delivery-4');
-    //   } else {
-    //     oneTimeLation();
-    //   }
-    // }
+    }
   }
 
   const oneTimeLation = () => {
