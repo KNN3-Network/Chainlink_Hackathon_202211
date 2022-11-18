@@ -101,133 +101,37 @@ Data processing job on hybrid smart contract is not easy to manage.
 
 |_frontEnd    
 ```
-    │  .gitignore
-    │  list.txt
-    │  package-lock.json
-    │  package.json
-    │  pnpm-lock.yaml
-    │  README.md
-    │  tsconfig.json
-    │  
     ├─public
-    │      favicon.ico
-    │      index.html
-    │      logo192.png
-    │      logo512.png
-    │      manifest.json
-    │      robots.txt
-    │      
     └─src
-        │  App.css
-        │  App.tsx
-        │  index.css
-        │  index.tsx
-        │  logo.svg
-        │  react-app-env.d.ts
-        │  reportWebVitals.ts
-        │  setupTests.ts
-        │  
         ├─api
-        │      index.ts
-        │      
-        ├─config
-        │      index.ts
-        │      
-        ├─context
-        │      Web3Context.js
-        │      
-        ├─contract
-        │  │  useChainlinkContract.js
-        │  │  
-        │  └─abi
-        │          Chainlink.json
-        │          
+        ├─config  
+        ├─context  
+        ├─contract 
         ├─hooks
-        │      useContract.js
-        │      useWeb3Context.js
-        │      
         ├─router
-        │      index.ts
-        │      
         ├─static
-        │  └─img
-        │          31.png
-        │          bac1.png
-        │          bac2.png
-        │          bac3.png
-        │          bac4.png
-        │          bac5.png
-        │          bac6.png
-        │          bar.png
-        │          copy.png
-        │          logo.png
-        │          QR_ready.png
-        │          
+        │  └─img      
         ├─store
         │      atom.js
-        │      
-        ├─style
-        │      resetAntd.scss
-        │      
-        ├─utils
-        │      tools.ts
-        │      
         └─views
             ├─home
-            │      index.scss
-            │      index.tsx
-            │      
-            ├─initialization
-            │      index.scss
-            │      index.tsx
-            │      
-            ├─login
-            │      index.scss
-            │      index.tsx
-            │      
+            ├─initialization 
+            ├─login 
             ├─page
             │  ├─Account
             │  │  ├─Role
-            │  │  │      index.scss
-            │  │  │      index.tsx
-            │  │  │      
-            │  │  └─User
-            │  │          index.scss
-            │  │          index.tsx
-            │  │          
+            │  │  └─User    
             │  ├─Dashboard
             │  │  ├─components
-            │  │  │      LineEchart.tsx
-            │  │  │      
             │  │  ├─InstanceUsage
-            │  │  │      index.scss
-            │  │  │      index.tsx
-            │  │  │      
-            │  │  └─JobStatus
-            │  │          index.scss
-            │  │          index.tsx
-            │  │          
+            │  │  └─JobStatus  
             │  └─Job
-            │      ├─DataDelivery
-            │      │      index.scss
-            │      │      index.tsx
-            │      │      
-            │      ├─DataPreparation
-            │      │      index.scss
-            │      │      index.tsx
-            │      │      
+            │      ├─DataDelivery   
+            │      ├─DataPreparatio   
             │      ├─DataProcessing
-            │      │      index.scss
-            │      │      index.tsx
-            │      │      
             │      └─JobInitialization
-            │              index.scss
-            │              index.tsx
-            │              
             └─register
-                    index.scss
-                    index.tsx
 ```
 
-## Deploy
+
 
